@@ -20,11 +20,13 @@ public class MainClassR {
     public static void main(String[] args) throws Exception {
 
 
-//        prepareTable(Student.class);
+        prepareTable(Student.class);
 
-        Student student = new Student(1, "w", 10, "a");
+//        Student student = new Student(1, "w", 10, "a");
 
-        addStudent(student.getClass());
+        Student stud = new Student(1, "w", 10, "a");
+
+        addStudent(stud.getClass());
 
     }
 
