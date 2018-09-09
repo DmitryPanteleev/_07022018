@@ -9,7 +9,7 @@ import java.util.Iterator;
 public class CheackHW {
     public static void main(String[] args) throws Exception {
         CheackHW cheackHW = new CheackHW();
-        cheackHW.testSum("C://testFolder");
+        cheackHW.testSum("C://0123");
     }
 
 
@@ -33,11 +33,6 @@ public class CheackHW {
                     .loadClass(name);
             Constructor constructor = ch.getConstructor();
             Object calc = constructor.newInstance();
-
-            Method m = ch.getDeclaredMethod("calc", int.class, int.class);
-
-            int res = (Integer) m.invoke(calc, 2, 2);
-            System.out.println(res);
             Method[] methods = ch.getMethods();
             for (Method method :
                     methods) {
@@ -46,43 +41,55 @@ public class CheackHW {
                         method.getParameterTypes()[1] == int.class &&
                         method.getParameterTypes()[2] == int.class &&
                         method.getParameterTypes()[3] == int.class &&
-                        method.getReturnType() == int.class) {
+                        method.getReturnType() == int.class
+//                        && method.getName().contains()
+                        ) {
                     int result = (Integer) method.invoke(calc, 2, 2, 2, 2);
                     System.out.println(result);
                 } else if (method.getParameterTypes().length == 2 &&
                         method.getParameterTypes()[0] == int.class &&
                         method.getParameterTypes()[1] == int.class &&
-                        method.getReturnType() == Boolean.class) {
+                        method.getReturnType() == boolean.class
+//                        && method.getName().contains()
+                        ) {
                     Boolean result = (Boolean) method.invoke(calc, 10 + 5);
                     System.out.println(result);
                 } else if (method.getParameterTypes().length == 1 &&
                         method.getParameterTypes()[0] == int.class &&
-                        method.getReturnType() == String.class) {
+                        method.getReturnType() == String.class
+//                        && method.getName().contains()
+                        ) {
                     String result = (String) method.invoke(calc, 10);
                     System.out.println(result);
                 } else if (method.getParameterTypes().length == 1 &&
                         method.getParameterTypes()[0] == int.class &&
-                        method.getReturnType() == Boolean.class) {
+                        method.getReturnType() == boolean.class
+                        && method.getName().contains("isPositive")
+                        ) {
                     Boolean result = (Boolean) method.invoke(calc, -10);
-                    System.out.println(result);
+                    System.out.println("Число " + -10 + " больше 0? " + result);
                 } else if (method.getParameterTypes().length == 1 &&
                         method.getParameterTypes()[0] == String.class &&
                         method.getReturnType() == String.class) {
-                    String result = (String) method.invoke(calc, "Name");
+                    String result = (String) method.invoke(calc, "Name"
+//                        && method.getName().contains()
+                    );
                     System.out.println(result);
                 } else if (method.getParameterTypes().length == 1 &&
                         method.getParameterTypes()[0] == int.class &&
-                        method.getReturnType() == Boolean.class) {
+                        method.getReturnType() == boolean.class
+//                        && method.getName().contains()
+                        ) {
                     Boolean result = (Boolean) method.invoke(calc, 2018);
                     System.out.println(result);
                 }
             }
 
-            if (res == 4) {
-                System.out.println(name + " Выполнил ДЗ");
-            } else {
-                System.out.println(name + " не выполнил ДЗ");
-            }
+//            if (4 == 4) {
+//                System.out.println(name + " Выполнил ДЗ");
+//            } else {
+//                System.out.println(name + " не выполнил ДЗ");
+//            }
 
         }
 
